@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Form</title>
+</head>
+<body>
+    <h1>Student Feedback Form</h1>
+        <form action = '/actin page.php' method = 'post'>
+            <label for="sname">Name:</label><br>
+            <input type="text" id="sname" name="sname" placeholder="Enter your Name" required><br><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="Enter your Email" required><br><br>
+            
+            <h2>Feedback Message </h2>
+            <p>The textarea element defines a multi-line input field, text your feedback in the below box.</p>
+            <textarea name="message" rows="10" cols="30"></textarea>
+  <br><br>
+            <p>How Satisfied are you?</p>
+            <input type="radio" id="satisfied" name="How Satisfied are you?" value="SATISFIED">
+            <label for="satisfied">SATISFIED</label><br>
+            <input type="radio" id="neutral" name="How Satisfied are you?" value="NEUTRAL">
+            <label for="neutral">NEUTRAL</label><br>
+            <input type="radio" id="unsatisfied" name="How Satisfied are you?" value="UNSATISFIED">
+            <label for="unsatisfied">UNSATISFIED</label><br>
+            
+            <input type="button" value="Submit" onclick="alert('Registration Successful!')">
+            <input type="reset" value="Reset">
+        </form> 
+</body>
+</html>
