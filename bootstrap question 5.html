@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Records Dashboard</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body{background-color:#f8f9fa;}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CBIT</a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+
+  <h3 class="mb-3">Student Records Dashboard</h3>
+
+  <!-- Filter Form -->
+  <form id="filterForm" class="row g-3 mb-3">
+    <div class="col-md-4">
+      <input type="text" id="filterName" class="form-control" placeholder="Filter by Name">
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+  </form>
+
+  <!-- Alert -->
+  <div id="noRecordsAlert" class="alert alert-warning alert-dismissible fade show d-none" role="alert">
+    <strong>No records found!</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <!-- Student Table -->
+  <div class="table-responsive">
+    <table class="table table-striped table-hover" id="studentTable">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Om Uplenchwar</td>
+          <td>om@example.com</td>
+          <td>Male</td>
+          <td>India</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Riya Sharma</td>
+          <td>riya@example.com</td>
+          <td>Female</td>
+          <td>India</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Amit Kumar</td>
+          <td>amit@example.com</td>
+          <td>Male</td>
+          <td>India</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Filter functionality
+document.getElementById('filterForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  let filterValue = document.getElementById('filterName').value.toLowerCase();
+  let table = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+  let rows = table.getElementsByTagName('tr');
+  let found = false;
+  
+  for(let i=0;i<rows.length;i++){
+    let nameCell = rows[i].getElementsByTagName('td')[1].textContent.toLowerCase();
+    if(nameCell.includes(filterValue)){
+      rows[i].style.display = '';
+      found = true;
+    } else {
+      rows[i].style.display = 'none';
+    }
+  }
+
+  // Show alert if no records found
+  let alertBox = document.getElementById('noRecordsAlert');
+  if(!found){
+    alertBox.classList.remove('d-none');
+  } else {
+    alertBox.classList.add('d-none');
+  }
+});
+</script>
+
+</body>
+</html>
